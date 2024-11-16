@@ -7,10 +7,10 @@ const config = {
   semi: true,
   singleQuote: true,
   tabWidth: 2,
-  trailingComma: "all",
+  trailingComma: 'all',
   useTabs: false,
   bracketSameLine: false,
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: ['prettier-plugin-tailwindcss'],
 };
 
 export default config;
