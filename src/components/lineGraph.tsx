@@ -4,7 +4,9 @@ import React from 'react';
 
 import tailwindTheme from 'src/../tailwind.config';
 
-import ReactApexChart from 'react-apexcharts';
+import dynamic from 'next/dynamic';
+
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 type LineGraphProps = {
   title: string;
@@ -27,7 +29,7 @@ export default function LineGraph(props: LineGraphProps) {
   }
   return (
     <div className={props.className}>
-      <ReactApexChart
+      <Chart
         type="line"
         height={'100%'}
         series={props.series}

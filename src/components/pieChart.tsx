@@ -2,7 +2,9 @@
 
 import React from 'react';
 
-import ReactApexChart from 'react-apexcharts';
+import dynamic from 'next/dynamic';
+
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 type PieChartProps = {
   title: string;
@@ -22,7 +24,7 @@ export default function PieChart(props: PieChartProps) {
   const labels = seriesLabels.map((seriesLabel) => seriesLabel.label);
   return (
     <div className={props.className}>
-      <ReactApexChart
+      <Chart
         type="pie"
         height={'100%'}
         series={series}
