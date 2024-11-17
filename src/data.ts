@@ -1,12 +1,18 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
+import path from 'path';
+import { env } from './env.mjs';
+
+const db = await open({
+  filename:
+    env.NODE_ENV == 'production'
+      ? path.join(process.cwd() + 'data.db')
+      : 'data.db',
+  driver: sqlite3.Database,
+});
 
 export type regions = 'Northeast' | 'Midwest' | 'South' | 'West';
 export async function averageEnergy(sqft: number, region: regions) {
-  const db = await open({
-    filename: 'data.db',
-    driver: sqlite3.Database,
-  });
   const average = (await db.get(
     `SELECT avg(ELBTU) from energy where SQFTC=${sqftCategory(sqft)} and region=${regionId(region)}`,
   )) as { 'avg(ELBTU)': number };
@@ -39,13 +45,8 @@ function regionId(region: regions) {
 }
 
 export async function averageWater(sqft: number, region: regions) {
-  const db = await open({
-    filename: 'data.db',
-    driver: sqlite3.Database,
-  });
   const query = (await db.get(
     `SELECT total(WTCNS),total(SQFT) from water where region=${regionId(region)}`,
   )) as { 'total(WTCNS)': number; 'total(SQFT)': number };
-  console.log(query);
   return ((query['total(WTCNS)'] / query['total(SQFT)']) * sqft) / 12;
 }
