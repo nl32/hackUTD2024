@@ -3,15 +3,20 @@ import { Card, Grid2 as Grid, Typography } from '@mui/material';
 import LineGraph from 'src/components/lineGraph';
 import PieChart from 'src/components/pieChart';
 import NavBar from 'src/components/navBar';
+import { db } from 'src/db';
+import { eq } from 'drizzle-orm';
+import { notFound } from 'next/navigation';
 
 export default async function Building({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const id = (await params).id;
-  console.log(id);
-
+  const inputId = (await params).id;
+  const building = await db.query.building.findFirst({
+    where: ({ id }) => eq(id, inputId),
+  });
+  if (!building) notFound();
   return (
     <>
       <NavBar />
@@ -23,13 +28,13 @@ export default async function Building({
               gutterBottom
               className="underline decoration-green decoration-8 underline-offset-8"
             >
-              Building name
+              {building.title}
             </Typography>
             <Typography variant="h6" gutterBottom className="text-slate-600">
-              {'Location: ' + 'Dallas, TX'}
+              {building.location}
             </Typography>
             <Typography variant="h6" gutterBottom className="text-slate-600">
-              {'Size: ' + (10000).toLocaleString() + ' Sq. Ft'}
+              {'Size: ' + building.squareFeet.toLocaleString() + ' Sq. Ft'}
             </Typography>
             <Typography variant="h4" gutterBottom className="inline">
               {'$' + (3500).toLocaleString() + ' '}
@@ -78,7 +83,7 @@ export default async function Building({
               series={[
                 {
                   name: 'Electricity consumption (thous Btu)',
-                  data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+                  data: building.energy,
                 },
                 {
                   name: 'Natural gas and fuel oil consumption (thous Btu)',
@@ -137,7 +142,7 @@ export default async function Building({
                     Your building
                   </Typography>
                   <Typography variant="body1" gutterBottom className="inline">
-                    {'<>' + ' '}
+                    {building.MAINHT + ' '}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -148,7 +153,7 @@ export default async function Building({
                   </Typography>
                   <br />
                   <Typography variant="body1" gutterBottom className="inline">
-                    {'<>' + ' '}
+                    {building.MAINCL + ' '}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -171,7 +176,7 @@ export default async function Building({
               series={[
                 {
                   name: 'Water Usage (gallons)',
-                  data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+                  data: building.water,
                 },
               ]}
               categories={[
@@ -211,7 +216,15 @@ export default async function Building({
               />
               <PieChart
                 title="Your building"
-                series={[10, 41, 35, 51, 49, 62, 69]}
+                series={[
+                  building.FLUORP,
+                  building.CFLRP,
+                  building.BULBP,
+                  building.HALOP,
+                  building.HIDP,
+                  building.LEDP,
+                  building.OTLTP,
+                ]}
                 labels={[
                   'FLUORP',
                   'CFLRP',
