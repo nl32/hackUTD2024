@@ -1,6 +1,7 @@
 import { ArrowForwardIos } from '@mui/icons-material';
 import { Card, Typography } from '@mui/material';
 import tailwindTheme from 'src/../tailwind.config';
+import Link from 'next/link';
 
 export type BuildingCardProps = {
   name: string;
@@ -16,8 +17,8 @@ export default function Building(props: BuildingCardProps) {
     green: 'Efficient',
   };
   return (
-    <a href={`/building/${props.id}`}>
-      <Card className="m-5 flex flex-row items-center justify-between rounded-lg bg-white p-5">
+    <Link className="m-5" href={`/building/${props.id}`}>
+      <Card className="flex flex-row items-center justify-between rounded-lg bg-white p-5">
         <div>
           <div className="flex flex-row items-center">
             <Typography variant="h6" fontWeight={700}>
@@ -41,6 +42,6 @@ export default function Building(props: BuildingCardProps) {
         </div>
         <ArrowForwardIos />
       </Card>
-    </a>
+    </Link>
   );
 }
