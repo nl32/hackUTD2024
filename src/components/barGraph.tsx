@@ -1,28 +1,33 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import React from 'react';
 
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+import tailwindTheme from 'src/../tailwind.config';
+
+import ReactApexChart from 'react-apexcharts';
 
 type GraphProps = {
-  yaxisFormatter?: (val: number) => string;
-  tooltipFormatter?: (
-    val: number,
-    extra: { series: number[]; seriesIndex: number; dataPointIndex: number },
-  ) => string;
   series: {
     name: string;
     data: number[];
   }[];
+  categories: string[];
   title: string;
-  labels?: string[];
+  annotation?: {
+    name: string;
+    value: number;
+  };
+  className?: string;
 };
 
 export default function LineGraph(props: GraphProps) {
+  const green = tailwindTheme.theme.extend.colors.green;
+  function formatter(value: number) {
+    return Number(value).toFixed(0).toLocaleString();
+  }
   return (
-    <div className="h-full">
-      <Chart
+    <div className={props.className}>
+      <ReactApexChart
         options={{
           chart: {
             id: 'line-chart',
@@ -31,23 +36,37 @@ export default function LineGraph(props: GraphProps) {
             },
             background: 'transparent',
           },
+          annotations: {
+            yaxis: props.annotation
+              ? [
+                  {
+                    y: props.annotation.value,
+                    borderColor: green.DEFAULT,
+                    label: {
+                      borderColor: 'transparent',
+                      style: {
+                        color: '#fff',
+                        background: green.DEFAULT,
+                      },
+                      text: props.annotation.name,
+                    },
+                  },
+                ]
+              : [],
+          },
           dataLabels: {
             enabled: false,
           },
           legend: {
             show: props.series.length !== 1,
           },
-          yaxis: {
-            labels: {
-              formatter: props.yaxisFormatter,
-            },
+          xaxis: {
+            categories: props.categories,
           },
-          /*colors:
-      props.series.length === 1
-        ? rainbowColors
-        : searchQueryColors.filter(
-            (searchQuery, i) => props.includedColors?.[i] ?? 1,
-          ),*/
+          colors:
+            props.series.length === 1
+              ? [green.DEFAULT]
+              : [green.light, green.dark],
           stroke: {
             width: 2,
             curve: 'smooth',
@@ -59,20 +78,9 @@ export default function LineGraph(props: GraphProps) {
               fontFamily: 'inherit',
             },
           },
-          /*noData: {
-      text: noDataText,
-      align: 'center',
-      verticalAlign: 'middle',
-      offsetX: 0,
-      offsetY: 0,
-      style: {
-        fontSize: '14px',
-        fontFamily: 'inherit',
-      },
-    },*/
           tooltip: {
             y: {
-              formatter: props.tooltipFormatter ?? props.yaxisFormatter,
+              formatter: formatter,
             },
           },
           states: {

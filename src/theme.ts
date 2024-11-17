@@ -1,7 +1,7 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
 
-import tailwindTheme from 'src/../tailwind.config.ts';
+import tailwindTheme from 'src/../tailwind.config';
 
 const theme = createTheme({
   palette: {
