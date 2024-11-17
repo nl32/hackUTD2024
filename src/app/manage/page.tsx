@@ -1,31 +1,11 @@
-import Building, { BuildingCardProps } from 'src/components/buildingManage';
+import Building from 'src/components/buildingManage';
 import NavBar from 'src/components/navBar';
 import { Button } from '@mui/material';
 import Link from 'next/link';
+import { db } from 'src/db';
 
-export default function Manage() {
-  const buildings: BuildingCardProps[] = [
-    {
-      id: '0',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-    },
-    {
-      id: '1',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-    },
-    {
-      id: '2',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-    },
-    {
-      id: '3',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-    },
-  ];
+export default async function Manage() {
+  const buildings = await db.query.building.findMany();
 
   return (
     <div className="flex h-screen flex-col items-center">
@@ -36,8 +16,8 @@ export default function Manage() {
         </Button>
       </Link>
       <div className="flex w-1/2 flex-col">
-        {buildings.map((buildingData, index) => (
-          <Building key={index} {...buildingData} />
+        {buildings.map((building, index) => (
+          <Building key={index} building={building} />
         ))}
       </div>
     </div>
