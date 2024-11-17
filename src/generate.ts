@@ -1,4 +1,4 @@
-import { averageEnergy, averageGas, averageWater, regions } from './data';
+import { averageEnergy, averageFuel, averageWater, regions } from './data';
 
 export async function energyHistory(
   sqft: number,
@@ -27,7 +27,7 @@ export async function gasHistory(
   variance: number,
   offset: number,
 ) {
-  const avgEnergy = await averageGas(sqft, region);
+  const avgEnergy = await averageFuel(sqft, region);
   const energies: number[] = [];
 
   for (let i = 0; i < 12; i++) {
