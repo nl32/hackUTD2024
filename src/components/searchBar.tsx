@@ -4,8 +4,6 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 
 function SearchBar() {
   return (
@@ -44,19 +42,6 @@ function SearchBar() {
             ),
           }}
         />
-
-        {/* Floating Action Button */}
-        <Fab
-          size="medium"
-          color="default"
-          style={{
-            marginLeft: '20px',
-            backgroundColor: '#e8e6e3',
-          }}
-          onClick={() => console.log('Add clicked')}
-        >
-          <AddIcon />
-        </Fab>
       </div>
     </div>
   );

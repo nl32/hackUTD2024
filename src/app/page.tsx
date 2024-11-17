@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <div className="flex h-screen flex-col items-center">
       <SearchBar />
-      <div className="my-3 flex flex-row">
+      <div className="my-5 flex flex-row">
         <SmallButton text="Manage Buldings" />
         <SmallButton text="Water Usage" />
         <SmallButton text="Energy Usage" />
