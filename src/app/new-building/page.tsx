@@ -36,30 +36,37 @@ const formSchema = z.object({
   ac: z.string().min(1),
   FLUORP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   CFLRP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   BULBP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   HALOP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   HIDP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   LEDP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   OTLTP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
 });
@@ -104,6 +111,12 @@ export default async function NewBuilding() {
         OTLTP: parsedData.OTLTP,
         energy: await energyHistory(parsedData.size, parsedData.region, 0.1, 0),
         water: await waterHistory(parsedData.size, parsedData.region, 0.08, 0),
+        gas: await energyHistory(
+          parsedData.size,
+          parsedData.region,
+          0.1,
+          -40000,
+        ),
       })
       .returning();
     redirect(`/building/${newBuilding[0].id}`);

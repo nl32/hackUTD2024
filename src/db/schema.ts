@@ -19,6 +19,10 @@ export const building = pgTable('building', {
     .array()
     .notNull()
     .default(sql`'{}'::integer[]`),
+  gas: integer('gas')
+    .array()
+    .notNull()
+    .default(sql`'{}'::integer[]`),
   FLUORP: integer('FLUORP').default(0).notNull(),
   CFLRP: integer('CFLRP').default(0).notNull(),
   BULBP: integer('BULBP').default(0).notNull(),

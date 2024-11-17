@@ -19,7 +19,10 @@ export default function Building({ building }: BuildingCardProps) {
 
   const totalEnergyUsage = building.energy.reduce((a, b) => a + b) / 12;
   const key =
-    totalEnergyUsage > 0 && totalEnergyUsage < 1050000 ? 'yellow' : 'red';
+    totalEnergyUsage > 0 && totalEnergyUsage < 500000 ? 'green' : 
+    totalEnergyUsage > 0 && totalEnergyUsage < 800000 ? 'yellow' : 
+    totalEnergyUsage > 0 && totalEnergyUsage < 1050000 ? 'orange' :
+     'red';
   return (
     <Link className="m-5" href={`/building/${building.id}`}>
       <Card className="flex flex-row items-center justify-between rounded-lg bg-white p-5">
