@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from 'src/theme';
 
 export const metadata: Metadata = {
   title: 'HackUTD Project',
@@ -13,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <ThemeProvider theme={theme}>
+        <body className="bg-background p-4 text-foreground">{children}</body>
+      </ThemeProvider>
     </html>
   );
 }
