@@ -1,5 +1,5 @@
 import { ArrowForwardIos } from '@mui/icons-material';
-import { Badge, Card, Typography } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 import tailwindTheme from 'src/../tailwind.config';
 
 export type BuildingCardProps = {
