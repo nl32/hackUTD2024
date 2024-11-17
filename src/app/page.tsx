@@ -4,7 +4,7 @@ import PieChart from 'src/components/pieChart';
 import NavBar from 'src/components/navBar';
 import Image from 'next/image';
 import { db } from 'src/db';
-import { genericAverageEnergy } from 'src/data';
+import { genericAverageEnergy, genericAverageFuel } from 'src/data';
 
 export default async function Home() {
   const buildings = await db.query.building.findMany();
@@ -13,8 +13,9 @@ export default async function Home() {
   const gasSums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const buildingTypes = [0, 0, 0];
 
-  const averageEnergy = await genericAverageEnergy() * buildings.length;
-  
+  const averageEnergy = (await genericAverageEnergy()) * buildings.length;
+  const averageFuel = (await genericAverageFuel()) * buildings.length;
+
   await buildings.forEach((building) => {
     for (let i = 0; i < 12; i++) {
       energySums[i] += building.energy[i];
@@ -77,10 +78,16 @@ export default async function Home() {
                 'Sep',
                 'Oct',
               ]}
-              annotation={{
-                name: 'Energy Baseline',
-                value: averageEnergy,
-              }}
+              annotations={[
+                {
+                  name: 'Electricity Baseline',
+                  value: averageEnergy,
+                },
+                {
+                  name: 'Fuel Baseline',
+                  value: averageFuel,
+                },
+              ]}
               className="h-1/2 bg-background"
             />
           </div>
