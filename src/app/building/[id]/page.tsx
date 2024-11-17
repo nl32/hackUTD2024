@@ -1,6 +1,6 @@
 import { Card, Grid2 as Grid, Typography } from '@mui/material';
 
-import BarGraph from 'src/components/barGraph';
+import LineGraph from 'src/components/lineGraph';
 
 export default async function Building({
   params,
@@ -62,7 +62,7 @@ export default async function Building({
           </Card>
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
-          <BarGraph
+          <LineGraph
             title="Energy Usage (thous Btu)"
             series={[
               {
@@ -147,7 +147,7 @@ export default async function Building({
           </div>
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
-          <BarGraph
+          <LineGraph
             title="Water Usage (gallons)"
             series={[
               {

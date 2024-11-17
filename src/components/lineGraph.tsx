@@ -6,7 +6,7 @@ import tailwindTheme from 'src/../tailwind.config';
 
 import ReactApexChart from 'react-apexcharts';
 
-type GraphProps = {
+type LineGraphProps = {
   series: {
     name: string;
     data: number[];
@@ -20,7 +20,7 @@ type GraphProps = {
   className?: string;
 };
 
-export default function LineGraph(props: GraphProps) {
+export default function LineGraph(props: LineGraphProps) {
   const green = tailwindTheme.theme.extend.colors.green;
   function formatter(value: number) {
     return Number(value).toFixed(0).toLocaleString();
