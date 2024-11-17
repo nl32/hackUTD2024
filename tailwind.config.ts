@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
+<<<<<<< Updated upstream
         background: "#ece7d8",
         foreground: "#000",
         green: {
@@ -16,6 +17,10 @@ export default {
           DEFAULT: "#84a882",
           dark: "#4a6a51",
         },
+=======
+        background: "#f5f2e8",
+        foreground: "#f5f2e8",
+>>>>>>> Stashed changes
       },
     },
   },
