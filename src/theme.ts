@@ -9,6 +9,9 @@ const theme = createTheme({
     primary: {
       main: tailwindTheme.theme.extend.colors.green.DEFAULT,
     },
+    secondary: {
+      main: tailwindTheme.theme.extend.colors.background,
+    },
   },
   typography: {
     fontFamily: 'var(--font-roboto)',
