@@ -111,6 +111,12 @@ export default async function NewBuilding() {
         OTLTP: parsedData.OTLTP,
         energy: await energyHistory(parsedData.size, parsedData.region, 0.1, 0),
         water: await waterHistory(parsedData.size, parsedData.region, 0.08, 0),
+        gas: await energyHistory(
+          parsedData.size,
+          parsedData.region,
+          0.1,
+          -40000,
+        ),
       })
       .returning();
     redirect(`/building/${newBuilding[0].id}`);
