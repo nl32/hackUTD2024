@@ -95,7 +95,7 @@ export default async function Building({
                   },
                   {
                     name: 'Natural gas and fuel oil consumption (thous Btu)',
-                    data: [148, 91, 69, 62, 49, 51, 35, 41, 10],
+                    data: building.gas,
                   },
                 ]}
                 categories={[
