@@ -1,6 +1,7 @@
 'use client';
 import {
   Button,
+  Card,
   FormControl,
   InputLabel,
   MenuItem,
@@ -46,144 +47,149 @@ export function BuildingForm() {
   // water usage last 12 months
   // type of heating - dropdown
   // lighting breakdown percent
-  
+
   return (
-    <form className="min-w-500 w-1/2" action="/action_page">
-      <Typography variant="h5">Add a New Building</Typography>
-      <FormControl fullWidth>
-        <TextField
-          className="my-2"
-          name="name"
-          id="name"
-          label="Name"
-          required
-        />
-      </FormControl>
-      <FormControl fullWidth>
-        <TextField
-          className="my-2"
-          name="location"
-          id="location"
-          label="Location"
-          required
-        />
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel id="region-label">Region</InputLabel>
-        <Select
-          className="my-2"
-          label="Region"
-          name="region"
-          labelId="region-label"
-          id="region"
-          required
-        >
-          <MenuItem value="south">South</MenuItem>
-          <MenuItem value="northeast">Northeast</MenuItem>
-          <MenuItem value="midwest">Midwest</MenuItem>
-          <MenuItem value="west">West</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <TextField
-          className="my-2"
-          id="name"
-          name="size"
-          label="Size"
-          required
-        />
-      </FormControl>
-      <FormControl fullWidth>
-        <TextField
-          className="my-2"
-          id="cost"
-          name="cost"
-          label="Average Montly Costs"
-          required
-        />
-      </FormControl>
-      <FormControl fullWidth required>
-        <InputLabel id="heating-label">Heating Type</InputLabel>
-        <Select
-          className="my-2"
-          label="Heating Type"
-          labelId="heating-label"
-          id="heating"
-          name="heating"
-          required
-        >
-          {heatOptions.map((option, i) => (
-            <MenuItem key={i} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl fullWidth required>
-        <InputLabel id="ac-label">Air Conditioning Type</InputLabel>
-        <Select
-          className="my-2"
-          label="Air Conditioning Type"
-          labelId="ac-label"
-          id="ac"
-          name="ac"
-          required
-        >
-          {acOptions.map((option, i) => (
-            <MenuItem key={i} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl>
-        <Typography variant="body1">Percentages of lighting types</Typography>
-        <div className="flex w-full flex-wrap">
+    <Card className="self-center">
+      <form className="min-w-500 w-1/2">
+        <Typography variant="h5">Add a New Building</Typography>
+        <FormControl fullWidth>
           <TextField
-            className="m-2"
-            type="number"
-            name="FLUORP"
-            label="% Fluorescent"
-          ></TextField>
+            className="my-2"
+            name="name"
+            id="name"
+            label="Name"
+            required
+          />
+        </FormControl>
+        <FormControl fullWidth>
           <TextField
-            className="m-2"
-            type="number"
-            name="CFLRP"
-            label="% Compact Fluorexcent"
-          ></TextField>
+            className="my-2"
+            name="location"
+            id="location"
+            label="Location"
+            required
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <InputLabel id="region-label">Region</InputLabel>
+          <Select
+            className="my-2"
+            label="Region"
+            name="region"
+            labelId="region-label"
+            id="region"
+            defaultValue=""
+            required
+          >
+            <MenuItem value="south">South</MenuItem>
+            <MenuItem value="northeast">Northeast</MenuItem>
+            <MenuItem value="midwest">Midwest</MenuItem>
+            <MenuItem value="west">West</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl fullWidth>
           <TextField
-            className="m-2"
-            type="number"
-            name="BULBP"
-            label="% Incandescent"
-          ></TextField>
+            className="my-2"
+            id="name"
+            name="size"
+            label="Size"
+            required
+          />
+        </FormControl>
+        <FormControl fullWidth>
           <TextField
-            className="m-2"
-            type="number"
-            name="HALOP"
-            label="% Halogen"
-          ></TextField>
-          <TextField
-            className="m-2"
-            type="number"
-            name="HIDP"
-            label="% HID"
-          ></TextField>
-          <TextField
-            className="m-2"
-            type="number"
-            name="LEDP"
-            label="% LED"
-          ></TextField>
-          <TextField
-            className="m-2"
-            type="number"
-            name="OTLTP"
-            label="% Other Lighting"
-          ></TextField>
-        </div>
-      </FormControl>
-      <Button type="submit">Submit</Button>
-    </form>
+            className="my-2"
+            id="cost"
+            name="cost"
+            label="Average Montly Costs"
+            required
+          />
+        </FormControl>
+        <FormControl fullWidth required>
+          <InputLabel id="heating-label">Heating Type</InputLabel>
+          <Select
+            className="my-2"
+            label="Heating Type"
+            labelId="heating-label"
+            id="heating"
+            name="heating"
+            defaultValue=""
+            required
+          >
+            {heatOptions.map((option, i) => (
+              <MenuItem key={i} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl fullWidth required>
+          <InputLabel id="ac-label">Air Conditioning Type</InputLabel>
+          <Select
+            className="my-2"
+            label="Air Conditioning Type"
+            labelId="ac-label"
+            id="ac"
+            name="ac"
+            defaultValue=""
+            required
+          >
+            {acOptions.map((option, i) => (
+              <MenuItem key={i} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl>
+          <Typography variant="body1">Percentages of lighting types</Typography>
+          <div className="flex w-full flex-wrap">
+            <TextField
+              className="m-2"
+              type="number"
+              name="FLUORP"
+              label="% Fluorescent"
+            ></TextField>
+            <TextField
+              className="m-2"
+              type="number"
+              name="CFLRP"
+              label="% Compact Fluorexcent"
+            ></TextField>
+            <TextField
+              className="m-2"
+              type="number"
+              name="BULBP"
+              label="% Incandescent"
+            ></TextField>
+            <TextField
+              className="m-2"
+              type="number"
+              name="HALOP"
+              label="% Halogen"
+            ></TextField>
+            <TextField
+              className="m-2"
+              type="number"
+              name="HIDP"
+              label="% HID"
+            ></TextField>
+            <TextField
+              className="m-2"
+              type="number"
+              name="LEDP"
+              label="% LED"
+            ></TextField>
+            <TextField
+              className="m-2"
+              type="number"
+              name="OTLTP"
+              label="% Other Lighting"
+            ></TextField>
+          </div>
+        </FormControl>
+        <Button type="submit">Submit</Button>
+      </form>
+    </Card>
   );
 }
