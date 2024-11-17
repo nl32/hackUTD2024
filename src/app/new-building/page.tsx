@@ -1,14 +1,14 @@
-import {
-  Card,
-} from '@mui/material';
+import { Card, Link } from '@mui/material';
 import { BuildingForm } from 'src/components/buildingForm';
+import NavBar from 'src/components/navBar';
 
 export default async function NewBuilding() {
   return (
-    <div className='w-full h-full'>
-      <Card className='items-center content-center flex flex-column'>
+    <div className="flex h-screen flex-col items-center">
+      <NavBar />
+      <div className="flex w-1/2 flex-col">
         <BuildingForm />
-      </Card>
+      </div>
     </div>
   );
 }

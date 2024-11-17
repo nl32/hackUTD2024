@@ -49,8 +49,8 @@ export function BuildingForm() {
   // lighting breakdown percent
 
   return (
-    <Card className="self-center">
-      <form className="min-w-500 w-1/2">
+    <Card className="p-5 my-10">
+      <form>
         <Typography variant="h5">Add a New Building</Typography>
         <FormControl fullWidth>
           <TextField
@@ -188,7 +188,9 @@ export function BuildingForm() {
             ></TextField>
           </div>
         </FormControl>
-        <Button type="submit">Submit</Button>
+        <Button variant="contained" type="submit" className="mb-5 mt-10 rounded-full">
+          Add new building
+        </Button>
       </form>
     </Card>
   );
