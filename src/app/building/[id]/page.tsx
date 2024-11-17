@@ -246,13 +246,13 @@ export default async function Building({
                 title="Other buildings"
                 series={[10, 41, 35, 51, 49, 62, 69]}
                 labels={[
-                  'FLUORP',
-                  'CFLRP',
-                  'BULBP',
-                  'HALOP',
-                  'HIDP',
-                  'LEDP',
-                  'OTLTP',
+                  'Fluorescent',
+                  'Compact Fluorexcent',
+                  'Incandescent',
+                  'Halogen',
+                  'HID',
+                  'LED',
+                  'Other Lighting',
                 ]}
                 className="h-72 flex-1"
               />
@@ -268,13 +268,13 @@ export default async function Building({
                   building.OTLTP,
                 ]}
                 labels={[
-                  'FLUORP',
-                  'CFLRP',
-                  'BULBP',
-                  'HALOP',
-                  'HIDP',
-                  'LEDP',
-                  'OTLTP',
+                  'Fluorescent',
+                  'Compact Fluorexcent',
+                  'Incandescent',
+                  'Halogen',
+                  'HID',
+                  'LED',
+                  'Other Lighting',
                 ]}
                 className="h-72 flex-1"
               />
