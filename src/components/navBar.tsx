@@ -16,16 +16,17 @@ export default function NavBar(props: NavBarProps) {
             Carbon Gauge
           </Typography>
         </Link>
-        { !props.manageDisabled && 
-        <Link href="/manage" className="ml-auto">
-          <Button
-            variant="contained"
-            color="secondary"
-            className="rounded-full"
-          >
-            Manage Buldings
-          </Button>
-        </Link>}
+        {!props.manageDisabled && (
+          <Link href="/manage" className="ml-auto">
+            <Button
+              variant="contained"
+              color="secondary"
+              className="rounded-full"
+            >
+              Manage Buldings
+            </Button>
+          </Link>
+        )}
       </Toolbar>
     </AppBar>
   );
