@@ -1,18 +1,11 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
-import { writeFile } from 'node:fs/promises';
-const response = await fetch(
-  'https://github.com/nl32/hackUTD2024/raw/refs/heads/main/public/data.db',
-);
-const blob = await response.blob();
-const data = new Uint8Array(Buffer.from(await blob.arrayBuffer()));
-await writeFile('data.db', data);
+import path from 'path';
 
 const db = await open({
-  filename: 'data.db',
+  filename: path.join(process.cwd(), 'src/app/data.db'),
   driver: sqlite3.Database,
 });
-
 export type regions = 'Northeast' | 'Midwest' | 'South' | 'West';
 export async function averageEnergy(sqft: number, region: regions) {
   const average = (await db.get(
