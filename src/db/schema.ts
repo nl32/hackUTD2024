@@ -9,6 +9,7 @@ export const building = pgTable('building', {
   title: text('name').notNull(),
   location: text('location').notNull(),
   squareFeet: integer('squareFeet').notNull(),
+  region: text('region'),
   energy: integer('energy')
     .array()
     .notNull()
@@ -17,4 +18,13 @@ export const building = pgTable('building', {
     .array()
     .notNull()
     .default(sql`'{}'::integer[]`),
+  FLUORP: integer('FLUORP'),
+  CFLRP: integer('CFLRP'),
+  BULBP: integer('BULBP'),
+  HALOP: integer('HALOP'),
+  HIDP: integer('HIDP'),
+  LEDP: integer('LEDP'),
+  OTLTP: integer('OTLTP'),
+  MAINHT: text('MAINHT'),
+  MAINCL: text('MAINCL'),
 });
