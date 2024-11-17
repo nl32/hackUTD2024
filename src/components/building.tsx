@@ -10,29 +10,38 @@ export type BuildingCardProps = {
 };
 export default function Building(props: BuildingCardProps) {
   const classificationKey = {
-    "red": "Needs improvement",
-    "orange": "Inefficient",
-    "yellow": "Room for growth",
-    "green": "Efficient"
-  }
+    red: 'Needs improvement',
+    orange: 'Inefficient',
+    yellow: 'Room for growth',
+    green: 'Efficient',
+  };
   return (
-    <Card className="flex m-5 rounded-lg bg-white p-5 flex-row justify-between items-center">
+    <a href={`/building/${props.id}`}>
+      <Card className="m-5 flex flex-row items-center justify-between rounded-lg bg-white p-5">
         <div>
-          <div className="items-center flex flex-row">
+          <div className="flex flex-row items-center">
             <Typography variant="h6" fontWeight={700}>
               {props.name}
             </Typography>
-            <Badge color='success'/>
+            <Badge color="success" />
             <div
-              className={`px-2 py-1 mx-2 rounded-full`}
-              style={{backgroundColor: tailwindTheme.theme.extend.colors.warning[props.classification]}}
+              className={`mx-2 rounded-full px-2 py-1`}
+              style={{
+                backgroundColor:
+                  tailwindTheme.theme.extend.colors.warning[
+                    props.classification
+                  ],
+              }}
             >
-              <Typography fontWeight={700} fontSize={11}>{classificationKey[props.classification]}</Typography>
+              <Typography fontWeight={700} fontSize={11}>
+                {classificationKey[props.classification]}
+              </Typography>
             </div>
           </div>
           <Typography variant="body1">{props.location}</Typography>
         </div>
         <ArrowForwardIos />
-    </Card>
+      </Card>
+    </a>
   );
 }
