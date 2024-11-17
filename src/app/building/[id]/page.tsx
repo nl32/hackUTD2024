@@ -12,7 +12,7 @@ export default async function Building({
   console.log(id);
 
   return (
-    <Card className="m-12 p-4" component="main">
+    <Card className="m-8 p-8" component="main">
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, sm: 12, md: 6 }}>
           <Typography
@@ -180,7 +180,7 @@ export default async function Building({
             className="h-72"
           />
         </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
+        <Grid size={12} className="flex flex-col gap-4">
           <Typography variant="h4">Lighting</Typography>
           <div className="flex gap-4">
             <PieChart

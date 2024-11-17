@@ -44,7 +44,7 @@ export default function PieChart(props: PieChartProps) {
           ],
           title: {
             text: props.title,
-            align: 'center',
+            align: 'left',
             style: {
               fontFamily: 'inherit',
             },
@@ -53,9 +53,6 @@ export default function PieChart(props: PieChartProps) {
             y: {
               formatter: formatter,
             },
-          },
-          legend: {
-            position: 'bottom',
           },
         }}
       />
