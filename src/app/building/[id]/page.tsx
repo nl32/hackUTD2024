@@ -5,7 +5,7 @@ import BarGraph from 'src/components/barGraph';
 export default async function Building({
   params,
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }) {
   const id = (await params).id;
   console.log(id);
@@ -61,10 +61,7 @@ export default async function Building({
             </ul>
           </Card>
         </Grid>
-      </Grid>
-
-      <Grid container spacing={2}>
-        <Grid size={{ xs: 12, sm: 12, md: 6 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
           <BarGraph
             title="Energy Usage (thous Btu)"
             series={[
@@ -94,8 +91,62 @@ export default async function Building({
             }}
             className="h-72"
           />
+          <div className="flex gap-2">
+            <Card variant="outlined" className="w-full p-2">
+              <Typography variant="h6" gutterBottom>
+                Buildings this size
+              </Typography>
+              <Typography variant="body1" gutterBottom className="inline">
+                {'MAINHT' + ' '}
+              </Typography>
+              <Typography
+                variant="body2"
+                gutterBottom
+                className="inline text-slate-600"
+              >
+                heating equipment
+              </Typography>
+              <br />
+              <Typography variant="body1" gutterBottom className="inline">
+                {'MAINCL' + ' '}
+              </Typography>
+              <Typography
+                variant="body2"
+                gutterBottom
+                className="inline text-slate-600"
+              >
+                air-conditioning equipment
+              </Typography>
+            </Card>
+            <Card variant="outlined" className="w-full p-2">
+              <Typography variant="h6" gutterBottom>
+                Your building
+              </Typography>
+              <Typography variant="body1" gutterBottom className="inline">
+                {'<>' + ' '}
+              </Typography>
+              <Typography
+                variant="body2"
+                gutterBottom
+                className="inline text-slate-600"
+              >
+                heating equipment
+              </Typography>
+              <br />
+              <Typography variant="body1" gutterBottom className="inline">
+                {'<>' + ' '}
+              </Typography>
+              <Typography
+                variant="body2"
+                gutterBottom
+                className="inline text-slate-600"
+              >
+                air-conditioning equipment
+              </Typography>
+            </Card>
+          </div>
         </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6 }}>
+        <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
           <BarGraph
             title="Water Usage (gallons)"
             series={[
