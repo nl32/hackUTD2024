@@ -14,6 +14,7 @@ import { db } from 'src/db';
 import { building } from 'src/db/schema';
 import { energyHistory, waterHistory } from 'src/generate';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -119,6 +120,7 @@ export default async function NewBuilding() {
         ),
       })
       .returning();
+    revalidatePath('/');
     redirect(`/building/${newBuilding[0].id}`);
   }
 
