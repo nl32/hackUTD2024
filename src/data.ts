@@ -1,9 +1,15 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
-import { env } from './env.mjs';
+import { writeFile } from 'node:fs/promises';
+const response = await fetch(
+  'https://github.com/nl32/hackUTD2024/raw/refs/heads/main/public/data.db',
+);
+const blob = await response.blob();
+const data = new Uint8Array(Buffer.from(await blob.arrayBuffer()));
+await writeFile('data.db', data);
 
 const db = await open({
-  filename: env.NODE_ENV == 'production' ? '/data.db' : 'public/data.db',
+  filename: 'data.db',
   driver: sqlite3.Database,
 });
 
