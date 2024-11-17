@@ -1,4 +1,4 @@
-# HackUTD 2024 - untitled project
+# HackUTD 2024 - Carbon Gauge
 
 ## Members
 
