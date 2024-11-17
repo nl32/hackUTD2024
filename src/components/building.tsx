@@ -23,7 +23,6 @@ export default function Building(props: BuildingCardProps) {
             <Typography variant="h6" fontWeight={700}>
               {props.name}
             </Typography>
-            <Badge color="success" />
             <div
               className={`mx-2 rounded-full px-2 py-1`}
               style={{
