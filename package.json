@@ -9,23 +9,29 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "next lint --fix",
-    "lint:check": "next lint"
+    "lint:check": "next lint",
+    "drizzle:push": "drizzle-kit push"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.7",
     "@mui/material": "^6.1.7",
+    "@neondatabase/serverless": "^0.10.3",
     "apexcharts": "^3.54.1",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.3",
     "next": "15.0.3",
     "react": "^18.3.1",
     "react-apexcharts": "^1.5.0",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "drizzle-kit": "^0.28.1",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
