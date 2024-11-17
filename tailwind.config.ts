@@ -12,6 +12,11 @@ export default {
         background: "#ece7d8",
         foreground: "#000",
         green: "#84a882",
+        green: {
+          light: "#a5c0aa",
+          DEFAULT: "#84a882",
+          dark: "#4a6a51",
+        },
       },
     },
   },

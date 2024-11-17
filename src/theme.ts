@@ -7,7 +7,7 @@ const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: tailwindTheme.theme.extend.colors.green,
+      main: tailwindTheme.theme.extend.colors.green.DEFAULT,
     },
   },
   typography: {
