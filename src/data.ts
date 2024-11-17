@@ -10,7 +10,7 @@ export async function averageEnergy(sqft: number, region: regions) {
   const average = (await db.get(
     `SELECT avg(ELBTU) from energy where SQFTC=${sqftCategory(sqft)} and region=${regionId(region)}`,
   )) as { 'avg(ELBTU)': number };
-  return average['avg(ELBTU)'];
+  return average['avg(ELBTU)'] / 12;
 }
 
 function sqftCategory(sqft: number) {
@@ -44,7 +44,8 @@ export async function averageWater(sqft: number, region: regions) {
     driver: sqlite3.Database,
   });
   const query = (await db.get(
-    `SELECT total(WTCNS),total(SQFT) from water where SQFTC=${sqftCategory(sqft)} and region=${regionId(region)}`,
+    `SELECT total(WTCNS),total(SQFT) from water where region=${regionId(region)}`,
   )) as { 'total(WTCNS)': number; 'total(SQFT)': number };
-  return (query['total(WTCNS)'] / query['total(SQFT)']) * sqft;
+  console.log(query);
+  return ((query['total(WTCNS)'] / query['total(SQFT)']) * sqft) / 12;
 }
