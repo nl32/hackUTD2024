@@ -1,8 +1,7 @@
 import Building, { BuildingCardProps } from 'src/components/building';
 import LineGraph from 'src/components/lineGraph';
 import PieChart from 'src/components/pieChart';
-import SearchBar from 'src/components/searchBar';
-import SmallButton from 'src/components/smallButton';
+import NavBar from 'src/components/navBar';
 
 export default function Home() {
   const buildings: BuildingCardProps[] = [
@@ -31,15 +30,10 @@ export default function Home() {
       classification: 'orange',
     },
   ];
+
   return (
     <div className="flex h-screen flex-col items-center">
-      <SearchBar />
-      <div className="my-5 flex flex-row">
-        <SmallButton text="Manage Buldings" />
-        <SmallButton text="Water Usage" />
-        <SmallButton text="Energy Usage" />
-        <SmallButton text="Gas Emission" />
-      </div>
+      <NavBar />
       <div className="flex h-3/4 w-3/4 flex-row">
         <div className="w-1/2">
           {buildings.map((buildingData, index) => (
