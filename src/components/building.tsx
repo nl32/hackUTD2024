@@ -16,6 +16,9 @@ export default function Building({ building }: BuildingCardProps) {
     yellow: 'Room for growth',
     green: 'Efficient',
   };
+
+  const totalEnergyUsage = building.energy.reduce((a, b)=> a + b) / 12;
+  const key = (totalEnergyUsage > 0 && totalEnergyUsage < 1050000) ? 'yellow' : 'red';
   return (
     <Link className="m-5" href={`/building/${building.id}`}>
       <Card className="flex flex-row items-center justify-between rounded-lg bg-white p-5">
@@ -28,11 +31,11 @@ export default function Building({ building }: BuildingCardProps) {
               className={`mx-2 rounded-full px-2 py-1`}
               style={{
                 backgroundColor:
-                  tailwindTheme.theme.extend.colors.warning['yellow'],
+                  tailwindTheme.theme.extend.colors.warning[key],
               }}
             >
               <Typography fontWeight={700} fontSize={11}>
-                {classificationKey['yellow']}
+                {classificationKey[key]}
               </Typography>
             </div>
           </div>
