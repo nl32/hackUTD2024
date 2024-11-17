@@ -6,9 +6,9 @@ export default function Home() {
 
   const buildings: BuildingCardProps[] = [
     { id: "", name: 'Building 1', location: 'Dallas, TX', classification: 'red' },
-    { id: "", name: 'Building 1', location: 'Dallas, TX', classification: 'red' },
-    { id: "", name: 'Building 1', location: 'Dallas, TX', classification: 'red' },
-    { id: "", name: 'Building 1', location: 'Dallas, TX', classification: 'red' },
+    { id: "", name: 'Building 1', location: 'Dallas, TX', classification: 'yellow' },
+    { id: "", name: 'Building 1', location: 'Dallas, TX', classification: 'green' },
+    { id: "", name: 'Building 1', location: 'Dallas, TX', classification: 'orange' },
   ];
   return (
     <div className='flex flex-col items-center h-screen'>
