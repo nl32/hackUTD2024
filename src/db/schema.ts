@@ -9,6 +9,7 @@ export const building = pgTable('building', {
   title: text('name').notNull(),
   location: text('location').notNull(),
   squareFeet: integer('squareFeet').notNull(),
+  cost: integer('cost').notNull(),
   region: text('region'),
   energy: integer('energy')
     .array()

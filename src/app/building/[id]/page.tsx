@@ -6,6 +6,7 @@ import NavBar from 'src/components/navBar';
 import { db } from 'src/db';
 import { eq } from 'drizzle-orm';
 import { notFound } from 'next/navigation';
+import { averageEnergy, averageWater, regions } from 'src/data';
 
 export default async function Building({
   params,
@@ -17,6 +18,14 @@ export default async function Building({
     where: ({ id }) => eq(id, inputId),
   });
   if (!building) notFound();
+  const waterBaseline = await averageWater(
+    building.squareFeet,
+    building.region as regions,
+  );
+  const energyBaseline = await averageEnergy(
+    building.squareFeet,
+    building.region as regions,
+  );
   return (
     <>
       <NavBar />
@@ -37,7 +46,7 @@ export default async function Building({
               {'Size: ' + building.squareFeet.toLocaleString() + ' Sq. Ft'}
             </Typography>
             <Typography variant="h4" gutterBottom className="inline">
-              {'$' + (3500).toLocaleString() + ' '}
+              {'$' + building.cost.toLocaleString() + ' '}
             </Typography>
             <Typography
               variant="h6"
@@ -91,6 +100,9 @@ export default async function Building({
                 },
               ]}
               categories={[
+                'Nov',
+                'Dec',
+                'Jan',
                 'Feb',
                 'Mar',
                 'Apr',
@@ -103,7 +115,7 @@ export default async function Building({
               ]}
               annotation={{
                 name: 'Baseline',
-                value: 55,
+                value: energyBaseline,
               }}
               className="h-72"
             />
@@ -180,6 +192,9 @@ export default async function Building({
                 },
               ]}
               categories={[
+                'Nov',
+                'Dec',
+                'Jan',
                 'Feb',
                 'Mar',
                 'Apr',
@@ -192,7 +207,7 @@ export default async function Building({
               ]}
               annotation={{
                 name: 'Baseline',
-                value: 55,
+                value: waterBaseline,
               }}
               className="h-72"
             />

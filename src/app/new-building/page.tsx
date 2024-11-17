@@ -92,6 +92,7 @@ export default async function NewBuilding() {
         location: parsedData.location,
         region: parsedData.region,
         squareFeet: parsedData.size,
+        cost: parsedData.cost,
         MAINHT: parsedData.heating,
         MAINCL: parsedData.ac,
         FLUORP: parsedData.FLUORP,
