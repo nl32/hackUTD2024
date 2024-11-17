@@ -18,13 +18,13 @@ export const building = pgTable('building', {
     .array()
     .notNull()
     .default(sql`'{}'::integer[]`),
-  FLUORP: integer('FLUORP'),
-  CFLRP: integer('CFLRP'),
-  BULBP: integer('BULBP'),
-  HALOP: integer('HALOP'),
-  HIDP: integer('HIDP'),
-  LEDP: integer('LEDP'),
-  OTLTP: integer('OTLTP'),
-  MAINHT: text('MAINHT'),
-  MAINCL: text('MAINCL'),
+  FLUORP: integer('FLUORP').default(0).notNull(),
+  CFLRP: integer('CFLRP').default(0).notNull(),
+  BULBP: integer('BULBP').default(0).notNull(),
+  HALOP: integer('HALOP').default(0).notNull(),
+  HIDP: integer('HIDP').default(0).notNull(),
+  LEDP: integer('LEDP').default(0).notNull(),
+  OTLTP: integer('OTLTP').default(0).notNull(),
+  MAINHT: text('MAINHT').default('').notNull(),
+  MAINCL: text('MAINCL').default('').notNull(),
 });
