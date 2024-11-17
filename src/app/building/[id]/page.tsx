@@ -2,7 +2,14 @@ import { Card, Grid2 as Grid, Typography } from '@mui/material';
 
 import BarGraph from 'src/components/barGraph';
 
-export default function Building() {
+export default async function Building({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const id = (await params).id;
+  console.log(id);
+
   return (
     <Card className="m-12 flex flex-col gap-8 p-4" component="main">
       <Grid container spacing={2}>
