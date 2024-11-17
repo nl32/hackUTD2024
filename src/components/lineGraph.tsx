@@ -25,7 +25,7 @@ type LineGraphProps = {
 export default function LineGraph(props: LineGraphProps) {
   const green = tailwindTheme.theme.extend.colors.green;
   function formatter(value: number) {
-    return Number(value).toFixed(0).toLocaleString();
+    return Math.round(value).toLocaleString();
   }
   return (
     <div className={props.className}>
@@ -66,6 +66,11 @@ export default function LineGraph(props: LineGraphProps) {
           },
           xaxis: {
             categories: props.categories,
+          },
+          yaxis: {
+            labels: {
+              formatter: formatter,
+            },
           },
           colors:
             props.series.length === 1

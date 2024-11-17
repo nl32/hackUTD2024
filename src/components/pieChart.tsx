@@ -39,13 +39,18 @@ type PieChartProps = {
 
 export default function PieChart(props: PieChartProps) {
   function formatter(value: number) {
-    return Number(value).toFixed(0).toLocaleString();
+    return Number(value).toFixed(1) + '%';
   }
 
   const seriesLabels = props.series
     .map((point, index) => ({ point: point, label: props.labels[index] }))
     .sort((a, b) => b.point - a.point);
-  const series = seriesLabels.map((seriesLabel) => seriesLabel.point);
+  let series = seriesLabels.map((seriesLabel) => seriesLabel.point);
+  const total = series.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
+  series = series.map((value) => (value / total) * 100);
   const labels = seriesLabels.map((seriesLabel) => seriesLabel.label);
 
   const colors = generateColorBlend('#324836', '#B0C8B5', series.length);
