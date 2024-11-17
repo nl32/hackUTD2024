@@ -72,7 +72,7 @@ export default function Building() {
               </ul>
               <Button
                 variant="contained"
-                className="rounded-full border-gray-300 p-2"
+                className="rounded-full border-gray-300 p-2 mt-4"
                 color="primary"
                 onClick={openEnergyModal}
               >
@@ -94,7 +94,7 @@ export default function Building() {
               </ul>
               <Button
                 variant="contained"
-                className="rounded-full border-gray-300 p-2"
+                className="rounded-full border-gray-300 p-2 mt-4"
                 color="primary"
                 onClick={openWaterModal}
               >
@@ -116,7 +116,7 @@ export default function Building() {
               </ul>
               <Button
                 variant="contained"
-                className="rounded-full border-gray-300 p-2"
+                className="rounded-full border-gray-300 p-2 mt-4"
                 color="primary"
                 onClick={openCarbonModal}
               >
@@ -130,15 +130,19 @@ export default function Building() {
             open={isCarbonModalOpen}
             onClose={closeCarbonModal}
             title="Carbon Emission Reduction"
-            content={`Current Issues: Carbon emissions in buildings come from energy use, inefficient materials, and poor design.
-        Improvement Suggestions:
-        - Enroll in green energy plans: Reduce emissions by 20%-30%.
-        - Use LED lights instead of fluorescent bulbs: Reduce emissions by 10%-15%.
-        - Improve windows and roof insulation: Reduce emissions by 15%-20%.
-        - Consider double-glazed or low-emissivity windows: Reduce emissions by 10%-15%.
-        
-        Overall Carbon Emission Reduction Potential:
-        55%–80% improvement depending on implementation.`}
+            content={
+              <div>
+                Current Issues: Carbon emissions in buildings come from energy use, 
+                inefficient materials, and poor design.<br /><br />
+                <strong>Improvement Suggestions:</strong><br />
+                -  Enroll in green energy plans: Reduce emissions by <strong>20%-30%.</strong><br />
+                -  Use LED lights instead of fluorescent bulbs: Reduce emissions by <strong>10%-15%.</strong><br />
+                -  Improve windows and roof insulation: Reduce emissions by <strong>15%-20%.</strong><br />
+                - Consider double-glazed or low-emissivity windows: Reduce emissions by <strong>10%-15%.</strong><br /><br />
+                <strong>Overall Carbon Emission Reduction Potential:</strong><br />
+                <strong>55%–80%</strong> improvement depending on implementation.
+              </div>
+            }
           />
 
           {/* Energy Consumption Modal */}
@@ -146,32 +150,38 @@ export default function Building() {
             open={isEnergyModalOpen}
             onClose={closeEnergyModal}
             title="Energy Consumption"
-            content={`Current Issues: High energy use often results from outdated appliances, lighting, and HVAC systems.
-        Improvement Suggestions:
-        - Switch to smart thermometers: Improve energy efficiency by 10%-20%.
-        - Use dimmable lights: Save energy by 5%-10%.
-        - Install motion sensors to turn off lights in low-occupancy spaces: Reduce energy use by 10%-15%.
-        - Lower water heater temperature: Improve energy savings by 5%-10%.
-        
-        Overall Energy Consumption Reduction Potential:
-        30%–55% improvement depending on scope and scale.`}
-          />
+            content={   
+            <div>
+              Current Issues: High energy use often results from outdated appliances, lighting, and HVAC systems.<br /><br />
+              <strong>Improvement Suggestions:</strong><br />
+              - Switch to smart thermometers: Improve energy efficiency by <strong>10%-20%.</strong><br />
+              - Use dimmable lights: Save energy by <strong>5%-10%.</strong><br />
+              - Install motion sensors to turn off lights in low-occupancy spaces: Reduce energy use by <strong>10%-15%.</strong><br />
+              - Lower water heater temperature: Improve energy savings by <strong>5%-10%.</strong><br /><br />
+              <strong>Overall Energy Consumption Reduction Potential:</strong><br />
+              <strong>30%–55%</strong> improvement depending on scope and scale.
+            </div>
+          }
+        />
 
           {/* Water Consumption Modal */}
           <Popup
             open={isWaterModalOpen}
             onClose={closeWaterModal}
             title="Water Consumption"
-            content={`Current Issues: Excess water use often stems from leaks, inefficient fixtures, and wasteful landscaping practices.
-        Improvement Suggestions:
-        - Install water sensors to detect leaks in real time: Save water by 10%-20%.
-        - Install low-flow faucets and toilets: Reduce water use by 20%-30%.
-        - Install climate-based irrigation systems: Improve water efficiency by 15%-25%.
-        - Consider double-glazed or low-emissivity windows (to optimize HVAC): Indirectly save water by reducing cooling loads (1%-5%).
-        
-        Overall Water Consumption Reduction Potential:
-        45%–65% improvement with comprehensive measures.`}
-          />
+            content={ 
+            <div>
+              Current Issues: Excess water use often stems from leaks, inefficient fixtures, and wasteful landscaping practices.<br /><br />
+              <strong>Improvement Suggestions:</strong><br />
+              - Install water sensors to detect leaks in real time: Save water by <strong>10%-20%.</strong><br />
+              - Install low-flow faucets and toilets: Reduce water use by <strong>20%-30%.</strong><br />
+              - Install climate-based irrigation systems: Improve water efficiency by <strong>15%-25%.</strong><br />
+              - Consider double-glazed or low-emissivity windows (to optimize HVAC): Indirectly save water by reducing cooling loads from <strong>1%-5%.</strong><br /><br />
+              <strong>Overall Water Consumption Reduction Potential:</strong><br />
+              <strong>45%–65%</strong> improvement with comprehensive measures.
+            </div>
+          }
+        />
 
           {/* visuals */}
 

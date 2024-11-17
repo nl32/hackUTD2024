@@ -5,7 +5,7 @@ interface PopupProps {
   open: boolean;
   onClose: () => void;
   title: string;
-  content: string;
+  content: React.ReactNode;
 }
 export default function Popup(props: PopupProps) {
   return (
@@ -23,7 +23,8 @@ export default function Popup(props: PopupProps) {
           transform: 'translate(-50%, -50%)',
           width: 400,
           bgcolor: 'background.paper',
-          border: '2px solid #000',
+          border: '6px solid #ece7d8',
+          borderRadius: 2,
           boxShadow: 24,
           p: 4,
         }}
