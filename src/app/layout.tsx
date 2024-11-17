@@ -4,8 +4,19 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from 'src/theme';
 
 export const metadata: Metadata = {
-  title: 'CarbonGauge',
-  description: 'Insights into a reduced carbon footprint',
+  title: 'Carbon Gauge',
+  description:
+    'Insights into a reduced carbon footprint for property managers based on real world comparison.',
+  openGraph: {
+    title: 'Carbon Gauge',
+    description:
+      'Insights into a reduced carbon footprint for property managers based on real world comparison.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    site: 'carbongauge.tech',
+  },
 };
 
 export default function RootLayout({
