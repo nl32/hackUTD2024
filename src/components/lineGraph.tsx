@@ -15,10 +15,10 @@ type LineGraphProps = {
     data: number[];
   }[];
   categories: string[];
-  annotation?: {
+  annotations?: {
     name: string;
     value: number;
-  };
+  }[];
   className?: string;
 };
 
@@ -27,6 +27,9 @@ export default function LineGraph(props: LineGraphProps) {
   function formatter(value: number) {
     return Math.round(value).toLocaleString();
   }
+  const colors =
+    props.series.length === 1 ? [green.DEFAULT] : [green.light, green.dark];
+
   return (
     <div className={props.className}>
       <Chart
@@ -41,22 +44,21 @@ export default function LineGraph(props: LineGraphProps) {
             background: 'transparent',
           },
           annotations: {
-            yaxis: props.annotation
-              ? [
-                  {
-                    y: props.annotation.value,
-                    borderColor: green.DEFAULT,
+            yaxis:
+              typeof props.annotations !== 'undefined'
+                ? props.annotations.map((annotation, index) => ({
+                    y: annotation.value,
+                    borderColor: colors[index % colors.length],
                     label: {
                       borderColor: 'transparent',
                       style: {
                         color: '#fff',
-                        background: green.DEFAULT,
+                        background: colors[index % colors.length],
                       },
-                      text: props.annotation.name,
+                      text: annotation.name,
                     },
-                  },
-                ]
-              : [],
+                  }))
+                : [],
           },
           dataLabels: {
             enabled: false,
@@ -72,10 +74,7 @@ export default function LineGraph(props: LineGraphProps) {
               formatter: formatter,
             },
           },
-          colors:
-            props.series.length === 1
-              ? [green.DEFAULT]
-              : [green.light, green.dark],
+          colors: colors,
           stroke: {
             width: 2,
             curve: 'smooth',

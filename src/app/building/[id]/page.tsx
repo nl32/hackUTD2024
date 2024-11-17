@@ -8,6 +8,7 @@ import { eq } from 'drizzle-orm';
 import { notFound } from 'next/navigation';
 import {
   averageEnergy,
+  averageFuel,
   averageWater,
   coolingMode,
   heatingMode,
@@ -29,6 +30,10 @@ export default async function Building({
     building.region as regions,
   );
   const energyBaseline = await averageEnergy(
+    building.squareFeet,
+    building.region as regions,
+  );
+  const fuelBaseline = await averageFuel(
     building.squareFeet,
     building.region as regions,
   );
@@ -127,10 +132,16 @@ export default async function Building({
                 "Sep '24",
                 "Oct '24",
               ]}
-              annotation={{
-                name: 'Baseline',
-                value: energyBaseline,
-              }}
+              annotations={[
+                {
+                  name: 'Electricity Baseline',
+                  value: energyBaseline,
+                },
+                {
+                  name: 'Fuel Baseline',
+                  value: fuelBaseline,
+                },
+              ]}
               className="h-72"
             />
             <Grid container spacing={2}>
@@ -219,10 +230,12 @@ export default async function Building({
                 "Sep '24",
                 "Oct '24",
               ]}
-              annotation={{
-                name: 'Baseline',
-                value: waterBaseline,
-              }}
+              annotations={[
+                {
+                  name: 'Baseline',
+                  value: waterBaseline,
+                },
+              ]}
               className="h-72"
             />
           </Grid>

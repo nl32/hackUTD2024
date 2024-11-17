@@ -79,6 +79,13 @@ export async function averageEnergy(sqft: number, region: regions) {
   return average['avg(ELBTU)'] / 12;
 }
 
+export async function averageFuel(sqft: number, region: regions) {
+  const average = (await db.get(
+    `SELECT avg(MFBTU) from energy where SQFTC=${sqftCategory(sqft)} and region=${regionId(region)}`,
+  )) as { 'avg(MFBTU)': number };
+  return average['avg(MFBTU)'] / 12;
+}
+
 function sqftCategory(sqft: number) {
   if (sqft < 5001) return 2;
   if (sqft < 10001) return 3;

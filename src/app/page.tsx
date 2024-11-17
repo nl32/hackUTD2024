@@ -71,10 +71,12 @@ export default async function Home() {
                 'Sep',
                 'Oct',
               ]}
-              annotation={{
-                name: 'Baseline',
-                value: 50000,
-              }}
+              annotations={[
+                {
+                  name: 'Baseline',
+                  value: 50000,
+                },
+              ]}
               className="h-1/2 bg-background"
             />
           </div>
