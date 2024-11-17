@@ -7,8 +7,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 
-
-
 function SearchBar() {
   return (
     <div
@@ -26,7 +24,6 @@ function SearchBar() {
           display: 'flex',
           alignItems: 'center',
           width: '700px', //Set width of the search bar
-      
         }}
       >
         <TextField
