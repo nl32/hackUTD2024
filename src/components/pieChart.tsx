@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import tailwindTheme from 'src/../tailwind.config';
-
 import ReactApexChart from 'react-apexcharts';
 
 type PieChartProps = {
@@ -14,25 +12,37 @@ type PieChartProps = {
 };
 
 export default function PieChart(props: PieChartProps) {
-  const green = tailwindTheme.theme.extend.colors.green;
   function formatter(value: number) {
     return Number(value).toFixed(0).toLocaleString();
   }
+  const seriesLabels = props.series
+    .map((point, index) => ({ point: point, label: props.labels[index] }))
+    .sort((a, b) => b.point - a.point);
+  const series = seriesLabels.map((seriesLabel) => seriesLabel.point);
+  const labels = seriesLabels.map((seriesLabel) => seriesLabel.label);
   return (
     <div className={props.className}>
       <ReactApexChart
         type="pie"
         height={'100%'}
-        series={props.series}
+        series={series}
         options={{
           chart: {
             background: 'transparent',
           },
-          labels: props.labels,
-          colors: [green.light, green.dark],
+          labels: labels,
+          colors: [
+            '#324836',
+            '#475D4B',
+            '#5C7360',
+            '#718876',
+            '#869D8B',
+            '#9BB3A0',
+            '#B0C8B5',
+          ],
           title: {
             text: props.title,
-            align: 'left',
+            align: 'center',
             style: {
               fontFamily: 'inherit',
             },
