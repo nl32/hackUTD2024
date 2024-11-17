@@ -15,7 +15,6 @@ function SearchBar() {
         justifyContent: 'center', // Center vertically
         alignItems: 'center', // Center horizontally
         height: '15vh', // Full viewport height
-        backgroundColor: '#f5f2e8', // Match the background color
       }}
     >
       {/* Search Bar */}

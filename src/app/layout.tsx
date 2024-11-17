@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvider theme={theme}>
-        <body className="bg-background p-4 text-foreground">{children}</body>
+        <body className="bg-background text-foreground">{children}</body>
       </ThemeProvider>
     </html>
   );
