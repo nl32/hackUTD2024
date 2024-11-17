@@ -2,7 +2,11 @@ import ForestIcon from '@mui/icons-material/Forest';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import Link from 'next/link';
 
-export default function NavBar() {
+type NavBarProps = {
+  manageDisabled?: boolean;
+};
+
+export default function NavBar(props: NavBarProps) {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -12,15 +16,17 @@ export default function NavBar() {
             Carbon Gauge
           </Typography>
         </Link>
-        <Link href="/manage" className="ml-auto">
-          <Button
-            variant="contained"
-            color="secondary"
-            className="rounded-full"
-          >
-            Manage Buldings
-          </Button>
-        </Link>
+        {!props.manageDisabled && (
+          <Link href="/manage" className="ml-auto">
+            <Button
+              variant="contained"
+              color="secondary"
+              className="rounded-full"
+            >
+              Manage Buldings
+            </Button>
+          </Link>
+        )}
       </Toolbar>
     </AppBar>
   );

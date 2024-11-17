@@ -6,7 +6,13 @@ import NavBar from 'src/components/navBar';
 import { db } from 'src/db';
 import { eq } from 'drizzle-orm';
 import { notFound } from 'next/navigation';
-import { averageEnergy, averageWater, regions } from 'src/data';
+import {
+  averageEnergy,
+  averageWater,
+  coolingMode,
+  heatingMode,
+  regions,
+} from 'src/data';
 
 export default async function Building({
   params,
@@ -23,6 +29,14 @@ export default async function Building({
     building.region as regions,
   );
   const energyBaseline = await averageEnergy(
+    building.squareFeet,
+    building.region as regions,
+  );
+  const heatMode = await heatingMode(
+    building.squareFeet,
+    building.region as regions,
+  );
+  const coolMode = await coolingMode(
     building.squareFeet,
     building.region as regions,
   );
@@ -126,7 +140,7 @@ export default async function Building({
                     Buildings this size
                   </Typography>
                   <Typography variant="body1" gutterBottom className="inline">
-                    {'MAINHT' + ' '}
+                    {heatMode + ' '}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -137,7 +151,7 @@ export default async function Building({
                   </Typography>
                   <br />
                   <Typography variant="body1" gutterBottom className="inline">
-                    {'MAINCL' + ' '}
+                    {coolMode + ' '}
                   </Typography>
                   <Typography
                     variant="body2"
