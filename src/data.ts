@@ -1,7 +1,7 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
-type regions = 'South';
+export type regions = 'Northeast' | 'Midwest' | 'South' | 'West';
 export async function averageEnergy(sqft: number, region: regions) {
   const db = await open({
     filename: 'data.db',
@@ -29,5 +29,22 @@ function regionId(region: regions) {
   switch (region) {
     case 'South':
       return 3;
+    case 'Northeast':
+      return 1;
+    case 'Midwest':
+      return 2;
+    case 'West':
+      return 4;
   }
+}
+
+export async function averageWater(sqft: number, region: regions) {
+  const db = await open({
+    filename: 'data.db',
+    driver: sqlite3.Database,
+  });
+  const query = (await db.get(
+    `SELECT total(WTCNS),total(SQFT) from water where SQFTC=${sqftCategory(sqft)} and region=${regionId(region)}`,
+  )) as { 'total(WTCNS)': number; 'total(SQFT)': number };
+  return (query['total(WTCNS)'] / query['total(SQFT)']) * sqft;
 }
