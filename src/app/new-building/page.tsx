@@ -36,30 +36,37 @@ const formSchema = z.object({
   ac: z.string().min(1),
   FLUORP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   CFLRP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   BULBP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   HALOP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   HIDP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   LEDP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
   OTLTP: z
     .string()
+    .default('')
     .transform((s) => Number(s))
     .pipe(z.number().default(0)),
 });
