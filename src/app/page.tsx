@@ -5,9 +5,13 @@ import NavBar from 'src/components/navBar';
 import Image from 'next/image';
 import { db } from 'src/db';
 import { genericAverageEnergy, genericAverageFuel } from 'src/data';
+import { asc } from 'drizzle-orm';
+import { building as buildingSchema } from 'src/db/schema';
 
 export default async function Home() {
-  const buildings = await db.query.building.findMany();
+  const buildings = await db.query.building.findMany({
+    orderBy: asc(buildingSchema.title),
+  });
 
   const energySums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const gasSums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
