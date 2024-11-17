@@ -32,7 +32,7 @@ export default function Home() {
     },
   ];
   return (
-    <div className="flex flex-col items-center h-screen">
+    <div className="flex h-screen flex-col items-center">
       <SearchBar />
       <div className="my-5 flex flex-row">
         <SmallButton text="Manage Buldings" />
@@ -46,12 +46,12 @@ export default function Home() {
             <Building key={index} {...buildingData} />
           ))}
         </div>
-        <div className="w-1/2 p-5 items-center h-full">
+        <div className="h-full w-1/2 items-center p-5">
           <PieChart
             title="Your Buildings"
             series={[10, 41, 35]}
             labels={['Large Offices', 'Small Offices', 'Commercial Buildings']}
-            className="flex-1 h-1/2 mb-6"
+            className="mb-6 h-1/2 flex-1"
           />
           <LineGraph
             title="Total Energy Usage (thous Btu)"
