@@ -5,7 +5,7 @@ import tailwindTheme from 'src/../tailwind.config.ts';
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
       main: tailwindTheme.theme.extend.colors.green,
     },
