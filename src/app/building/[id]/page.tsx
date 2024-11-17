@@ -1,6 +1,7 @@
 import { Card, Grid2 as Grid, Typography } from '@mui/material';
 
 import LineGraph from 'src/components/lineGraph';
+import PieChart from 'src/components/pieChart';
 
 export default async function Building({
   params,
@@ -11,7 +12,7 @@ export default async function Building({
   console.log(id);
 
   return (
-    <Card className="m-12 flex flex-col gap-8 p-4" component="main">
+    <Card className="m-12 p-4" component="main">
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, sm: 12, md: 6 }}>
           <Typography
@@ -62,6 +63,7 @@ export default async function Building({
           </Card>
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
+          <Typography variant="h4">Energy Usage</Typography>
           <LineGraph
             title="Energy Usage (thous Btu)"
             series={[
@@ -91,62 +93,67 @@ export default async function Building({
             }}
             className="h-72"
           />
-          <div className="flex gap-2">
-            <Card variant="outlined" className="w-full p-2">
-              <Typography variant="h6" gutterBottom>
-                Buildings this size
-              </Typography>
-              <Typography variant="body1" gutterBottom className="inline">
-                {'MAINHT' + ' '}
-              </Typography>
-              <Typography
-                variant="body2"
-                gutterBottom
-                className="inline text-slate-600"
-              >
-                heating equipment
-              </Typography>
-              <br />
-              <Typography variant="body1" gutterBottom className="inline">
-                {'MAINCL' + ' '}
-              </Typography>
-              <Typography
-                variant="body2"
-                gutterBottom
-                className="inline text-slate-600"
-              >
-                air-conditioning equipment
-              </Typography>
-            </Card>
-            <Card variant="outlined" className="w-full p-2">
-              <Typography variant="h6" gutterBottom>
-                Your building
-              </Typography>
-              <Typography variant="body1" gutterBottom className="inline">
-                {'<>' + ' '}
-              </Typography>
-              <Typography
-                variant="body2"
-                gutterBottom
-                className="inline text-slate-600"
-              >
-                heating equipment
-              </Typography>
-              <br />
-              <Typography variant="body1" gutterBottom className="inline">
-                {'<>' + ' '}
-              </Typography>
-              <Typography
-                variant="body2"
-                gutterBottom
-                className="inline text-slate-600"
-              >
-                air-conditioning equipment
-              </Typography>
-            </Card>
-          </div>
+          <Grid container spacing={2}>
+            <Grid size={6}>
+              <Card variant="outlined" className="w-full p-2">
+                <Typography variant="h6" gutterBottom>
+                  Buildings this size
+                </Typography>
+                <Typography variant="body1" gutterBottom className="inline">
+                  {'MAINHT' + ' '}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  className="inline text-slate-600"
+                >
+                  heating equipment
+                </Typography>
+                <br />
+                <Typography variant="body1" gutterBottom className="inline">
+                  {'MAINCL' + ' '}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  className="inline text-slate-600"
+                >
+                  air-conditioning equipment
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid size={6}>
+              <Card variant="outlined" className="w-full p-2">
+                <Typography variant="h6" gutterBottom>
+                  Your building
+                </Typography>
+                <Typography variant="body1" gutterBottom className="inline">
+                  {'<>' + ' '}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  className="inline text-slate-600"
+                >
+                  heating equipment
+                </Typography>
+                <br />
+                <Typography variant="body1" gutterBottom className="inline">
+                  {'<>' + ' '}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  className="inline text-slate-600"
+                >
+                  air-conditioning equipment
+                </Typography>
+              </Card>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
+          <Typography variant="h4">Water Usage</Typography>
           <LineGraph
             title="Water Usage (gallons)"
             series={[
@@ -172,6 +179,39 @@ export default async function Building({
             }}
             className="h-72"
           />
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6 }} className="flex flex-col gap-4">
+          <Typography variant="h4">Lighting</Typography>
+          <div className="flex gap-4">
+            <PieChart
+              title="Other buildings"
+              series={[10, 41, 35, 51, 49, 62, 69]}
+              labels={[
+                'FLUORP',
+                'CFLRP',
+                'BULBP',
+                'HALOP',
+                'HIDP',
+                'LEDP',
+                'OTLTP',
+              ]}
+              className="h-72 flex-1"
+            />
+            <PieChart
+              title="Your building"
+              series={[10, 41, 35, 51, 49, 62, 69]}
+              labels={[
+                'FLUORP',
+                'CFLRP',
+                'BULBP',
+                'HALOP',
+                'HIDP',
+                'LEDP',
+                'OTLTP',
+              ]}
+              className="h-72 flex-1"
+            />
+          </div>
         </Grid>
       </Grid>
     </Card>

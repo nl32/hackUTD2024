@@ -7,12 +7,12 @@ import tailwindTheme from 'src/../tailwind.config';
 import ReactApexChart from 'react-apexcharts';
 
 type LineGraphProps = {
+  title: string;
   series: {
     name: string;
     data: number[];
   }[];
   categories: string[];
-  title: string;
   annotation?: {
     name: string;
     value: number;
@@ -28,9 +28,11 @@ export default function LineGraph(props: LineGraphProps) {
   return (
     <div className={props.className}>
       <ReactApexChart
+        type="line"
+        height={'100%'}
+        series={props.series}
         options={{
           chart: {
-            id: 'line-chart',
             zoom: {
               enabled: false,
             },
@@ -83,17 +85,7 @@ export default function LineGraph(props: LineGraphProps) {
               formatter: formatter,
             },
           },
-          states: {
-            active: {
-              filter: {
-                type: 'none',
-              },
-            },
-          },
         }}
-        series={props.series}
-        type="line"
-        height={'100%'}
       />
     </div>
   );
