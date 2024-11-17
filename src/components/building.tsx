@@ -2,14 +2,14 @@ import { ArrowForwardIos } from '@mui/icons-material';
 import { Card, Typography } from '@mui/material';
 import tailwindTheme from 'src/../tailwind.config';
 import Link from 'next/link';
+import { InferSelectModel } from 'drizzle-orm';
+import { building } from 'src/db/schema';
 
 export type BuildingCardProps = {
-  name: string;
-  location: string;
-  id: string;
-  classification: 'red' | 'orange' | 'yellow' | 'green';
+  building: InferSelectModel<typeof building>;
+  // classification: 'red' | 'orange' | 'yellow' | 'green';
 };
-export default function Building(props: BuildingCardProps) {
+export default function Building({ building }: BuildingCardProps) {
   const classificationKey = {
     red: 'Needs improvement',
     orange: 'Inefficient',
@@ -17,28 +17,26 @@ export default function Building(props: BuildingCardProps) {
     green: 'Efficient',
   };
   return (
-    <Link className="m-5" href={`/building/${props.id}`}>
+    <Link className="m-5" href={`/building/${building.id}`}>
       <Card className="flex flex-row items-center justify-between rounded-lg bg-white p-5">
         <div>
           <div className="flex flex-row items-center">
             <Typography variant="h6" fontWeight={700}>
-              {props.name}
+              {building.title}
             </Typography>
             <div
               className={`mx-2 rounded-full px-2 py-1`}
               style={{
                 backgroundColor:
-                  tailwindTheme.theme.extend.colors.warning[
-                    props.classification
-                  ],
+                  tailwindTheme.theme.extend.colors.warning['yellow'],
               }}
             >
               <Typography fontWeight={700} fontSize={11}>
-                {classificationKey[props.classification]}
+                {classificationKey['yellow']}
               </Typography>
             </div>
           </div>
-          <Typography variant="body1">{props.location}</Typography>
+          <Typography variant="body1">{building.location}</Typography>
         </div>
         <ArrowForwardIos />
       </Card>

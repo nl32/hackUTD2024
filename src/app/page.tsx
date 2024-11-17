@@ -1,43 +1,18 @@
-import Building, { BuildingCardProps } from 'src/components/building';
+import Building from 'src/components/building';
 import LineGraph from 'src/components/lineGraph';
 import PieChart from 'src/components/pieChart';
 import NavBar from 'src/components/navBar';
+import { db } from 'src/db';
 
-export default function Home() {
-  const buildings: BuildingCardProps[] = [
-    {
-      id: '0',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-      classification: 'red',
-    },
-    {
-      id: '1',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-      classification: 'yellow',
-    },
-    {
-      id: '2',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-      classification: 'green',
-    },
-    {
-      id: '3',
-      name: 'Building 1',
-      location: 'Dallas, TX',
-      classification: 'orange',
-    },
-  ];
-
+export default async function Home() {
+  const buildings = await db.query.building.findMany();
   return (
     <div className="flex h-screen flex-col items-center">
       <NavBar />
       <div className="flex h-3/4 w-3/4 flex-row">
         <div className="w-1/2">
-          {buildings.map((buildingData, index) => (
-            <Building key={index} {...buildingData} />
+          {buildings.map((building, index) => (
+            <Building key={index} building={building} />
           ))}
         </div>
         <div className="h-full w-1/2 items-center p-5">
