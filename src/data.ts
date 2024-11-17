@@ -1,13 +1,9 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
-import path from 'path';
 import { env } from './env.mjs';
 
 const db = await open({
-  filename:
-    env.NODE_ENV == 'production'
-      ? path.join(process.cwd() + 'data.db')
-      : 'data.db',
+  filename: env.NODE_ENV == 'production' ? '/data.db' : 'public/data.db',
   driver: sqlite3.Database,
 });
 
